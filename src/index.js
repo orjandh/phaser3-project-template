@@ -6,6 +6,7 @@ class MyGame extends Phaser.Scene
     constructor ()
     {
         super();
+        this.logo = null;
     }
 
     preload ()
@@ -15,16 +16,7 @@ class MyGame extends Phaser.Scene
       
     create ()
     {
-        const logo = this.add.image(400, 150, 'logo');
-      
-        this.tweens.add({
-            targets: logo,
-            y: 450,
-            duration: 2000,
-            ease: "Power2",
-            yoyo: true,
-            loop: -1
-        });
+        this.logo = this.add.image(200, 200, 'logo');
     }
 }
 
@@ -33,7 +25,10 @@ const config = {
     parent: 'phaser-example',
     width: 800,
     height: 600,
-    scene: MyGame
+    scene: MyGame,
+    scale: {
+        mode: Phaser.Scale.RESIZE
+    }
 };
 
 const game = new Phaser.Game(config);
